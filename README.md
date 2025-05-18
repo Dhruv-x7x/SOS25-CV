@@ -8,4 +8,6 @@ This project was completed as a part of SOS'25 at IIT Bombay in the summer of 20
 ## Repository Structure 
 ```bash
 |--- README.md
+|--- week_1-2/
+  |--- README.md
 ```
