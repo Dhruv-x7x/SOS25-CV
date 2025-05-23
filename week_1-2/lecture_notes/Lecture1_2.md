@@ -40,7 +40,7 @@
 - Distance metrics:
   - L1
   - L2 (Euclidean)
-    - $$L2 = d(I_1, I_2) = \sqrt(\sum_p (I_1^p - I_2^p )^2 )$$
+    -  $$L2 = d(I_1, I_2) = \sqrt(\sum_p (I_1^p - I_2^p )^2 )$$
 
 ---
 
