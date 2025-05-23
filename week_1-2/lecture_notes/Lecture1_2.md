@@ -45,3 +45,12 @@
 ---
 
 #### Linear Classifier (Template Matching)
+
+- An abstraction of what the actual machine learning models do. MLP is made from this classifier but we add the activation functions to make it non-linear.
+- Suppose we have the CIFAR10 dataset. A dataset of 50000 images across 10 classes. Each image is 32x32x3 = 3072 pixels. The linear classifier does the following:
+  - Image (3072 x 1) ---> f(x, W) ---> 10 Class scores
+  - Max of the class scores is our prediction. W is the weights vector. It contains a template for each class and matches the input image with it.
+  - To combine the weights and input, we can just multiply.
+    - $f(x, W) = Wx + b$
+      - here $x$ is $3071 \times 1$, $W$ is $10 \times 3072$. Sometimes when our classes are unbalanced we add a *bias* term $b$ which is $10 \times 1$
+- Linear classifier basically tries to fit a line to separate out the classes. But it fails in cases similar to multi-modal classes, which means there is a class inside of a class. e.g. cat, sitting cat, red cat, etc., 
