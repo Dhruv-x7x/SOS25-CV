@@ -12,5 +12,7 @@ Accomplished:
 ## Directory Structure
 
 ```bash
-|--- README.md
+|--- README.md      # current file
+|--- lecture_notes  # stanford cs231n lecture notes
+|--- assignment1    # stanford cs231n assignment 1
 ```
