@@ -6,7 +6,7 @@ Details about this assignment can be found [on the course webpage](http://cs231n
 
 ```./cs231n/knn.ipynb``` contains an implementation of KNN on the CIFAR10 dataset. The training data included 50000 images and the testing data had 10000. I used a subset of this for the exercise, 5000 training and 500 testing. The highest accuracy for this subset was 28.8% with k = 10. I found the optimal k using k-fold cross-validation. 
 
-On using the full dataset, I recorded the highest accuracy to be 
+On using the full dataset, I recorded the highest accuracy to be 37% after computing for 60 minutes. I can conclude that KNN is not good for images as computation takes too long during prediction time and the accuracy is very low even for a decently large training dataset. 
 
 ---
 
