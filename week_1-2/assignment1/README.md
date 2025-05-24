@@ -12,8 +12,8 @@ On using the full dataset, I recorded the highest accuracy to be
 
 #### Numpy functions
 
-- ```python np.array_split(array, no_of_splits)```: using this function you can easily split your training data into the number of folds that you want.
-- ```python np.vstack()```: vertically stack arrays to form a matrix
+- ```np.array_split(array, no_of_splits)```: using this function you can easily split your training data into the number of folds that you want.
+- ```np.vstack()```: vertically stack arrays to form a matrix
 
 ```python
 import numpy as np
@@ -30,7 +30,7 @@ print(result)
 #  [7 8 9]]
 print(f"Shape: {result.shape}")  # Shape: (3, 3)
 ```
-- ```python np.hstack()```: horizontally stacks arrays to form a 1D array
+- ```np.hstack()```: horizontally stacks arrays to form a 1D array
 
 ```python
 # Example 1: Stacking 1D arrays
@@ -43,3 +43,14 @@ print(result)
 # Output: [1 2 3 4 5 6 7 8 9]
 print(f"Shape: {result.shape}")  # Shape: (9,)
 ```
+
+---
+
+#### Finding KNN in py
+
+```python
+closest_y = self.y_train[np.argsort(dists[i])[:k]]
+y_pred[i] = Counter(closest_y).most_common(1)[0][0]
+```
+
+With just two lines we can find the k closest points to our input image. `dists` array contains the distances of each y_train to x_train. Each row is y_train[i] and every column contains differences of all y_train to x_train[j]. `np.argsort` sorts in increasing order, then we slice the first k smallest values. The second line calls on `Counter()` from `collections` which has a `.most_common()` attribute and using this we can find the majority class. 
