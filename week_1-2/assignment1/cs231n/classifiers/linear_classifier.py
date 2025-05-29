@@ -51,7 +51,10 @@ class LinearClassifier(object):
       # Hint: Use np.random.choice to generate indices. Sampling with         #
       # replacement is faster than sampling without replacement.              #
       #########################################################################
-      pass
+      indices = np.random.choice(num_train, batch_size, replace=True)
+      X_batch = X[indices]
+      y_batch = y[indices]
+
       #########################################################################
       #                       END OF YOUR CODE                                #
       #########################################################################
@@ -65,7 +68,7 @@ class LinearClassifier(object):
       # TODO:                                                                 #
       # Update the weights using the gradient and the learning rate.          #
       #########################################################################
-      pass
+      self.W -= learning_rate*grad
       #########################################################################
       #                       END OF YOUR CODE                                #
       #########################################################################
@@ -76,29 +79,16 @@ class LinearClassifier(object):
     return loss_history
 
   def predict(self, X):
-    """
-    Use the trained weights of this linear classifier to predict labels for
-    data points.
+      """
+      Use the trained weights of this linear classifier to predict labels for
+      data points.
+      """
+      # Compute scores for all samples and all classes
+      scores = X.dot(self.W)  # shape: (N, C)
+      # For each sample, pick the class with the highest score
+      y_pred = np.argmax(scores, axis=1)  # shape: (N,)
+      return y_pred
 
-    Inputs:
-    - X: A numpy array of shape (N, D) containing training data; there are N
-      training samples each of dimension D.
-
-    Returns:
-    - y_pred: Predicted labels for the data in X. y_pred is a 1-dimensional
-      array of length N, and each element is an integer giving the predicted
-      class.
-    """
-    y_pred = np.zeros(X.shape[0])
-    ###########################################################################
-    # TODO:                                                                   #
-    # Implement this method. Store the predicted labels in y_pred.            #
-    ###########################################################################
-    pass
-    ###########################################################################
-    #                           END OF YOUR CODE                              #
-    ###########################################################################
-    return y_pred
   
   def loss(self, X_batch, y_batch, reg):
     """
@@ -115,7 +105,27 @@ class LinearClassifier(object):
     - loss as a single float
     - gradient with respect to self.W; an array of the same shape as W
     """
-    pass
+    loss = 0.0
+    dW = np.zeros(self.W.shape) # initialize the gradient as zero
+    num_train = X_batch.shape[0]
+
+    scores = X_batch.dot(self.W)
+    correct_scores = scores[np.arange(num_train), y_batch]
+    margin = scores - correct_scores[:, np.newaxis] + 1
+    margin[np.arange(num_train), y_batch] = 0
+    loss += np.sum(margin[margin>0])
+    loss /= num_train
+    loss += reg * np.sum(self.W * self.W)
+    binary = (margin > 0).astype(float)  # (N, C)
+    row_sum = np.sum(binary, axis=1)      # (N,)
+
+    # For correct class, subtract row_sum for each sample
+    binary[np.arange(num_train), y_batch] = -row_sum
+
+    # dW: X.T.dot(binary) gives the correct shape and semantics
+    dW = X_batch.T.dot(binary) / num_train
+    dW += 2 * reg * self.W
+    return loss, dW
 
 
 class LinearSVM(LinearClassifier):
