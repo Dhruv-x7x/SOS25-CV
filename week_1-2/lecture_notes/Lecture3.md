@@ -11,7 +11,7 @@ for a dataset ${x_i, y_i}_{i=1}^N$,
 #### Multi-class SVM loss
 
 - scores vector = $f(x_i, W)$
-- $ L_i = \sum_{j\ne y_i} max(0, s_j - s_{y_i} + 1) $ also known as Hinge Loss
+- $L_i = \sum_{j\ne y_i} max(0, s_j - s_{y_i} + 1)$ also known as Hinge Loss
 - It only cares about whether the scores for the wrong classes is not as large as the correct class - 1.
 
 ---
@@ -30,9 +30,9 @@ for a dataset ${x_i, y_i}_{i=1}^N$,
 
 #### Softmax and Negative Log Likelihood loss
 
-- $ P(Y = k | X = x_i) = \frac{e^s k}{\sum_j e^s j} $
+- $P(Y = k | X = x_i) = \frac{e^s k}{\sum_j e^s j}$
 - In softmax we convert the logits into positive numbers by exponentiating them and then we divide by the sum of all exponents to normalize everything. We get a probability distribution between 0 and 1.
-- The loss then becomes, $ L_i = -log(\frac{e^s k}{\sum_j e^s j})
+- The loss then becomes, $L_i = -log(\frac{e^s k}{\sum_j e^s j})$
 - We use log because it's easier for computers to work with and since log likelihood measures goodness of something, we mulitply by -1 to get a loss function.
 
 ---
