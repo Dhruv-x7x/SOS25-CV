@@ -8,6 +8,9 @@ Goals:
   - Repeat with PyTorch or Tensorflow
 
 Accomplished:
+- Assignment 1 50%
+- Lectures 50%
+- Task set 2 0%
 
 ## Directory Structure
 
