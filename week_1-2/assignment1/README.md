@@ -91,3 +91,17 @@ y_batch = y[indices]
 - Overloading functions using sub-classes
 
 ---
+
+### Softmax
+
+`./softmax.ipynb` contains the work for this part as well as `./cs231n/classifiers/softmax.py`. I used both simple for loops as well as numpy broadcasting to see the difference. Numpy broadcasting makes everything much faster. I consistently saw a 10 times faster matrix computations. 
+
+I got an accuracy of 36% with the softmax classifier over the validation set and a testing accuracy of 35%. The best parameters turned out to be (lr, lambda) = (5e-7, 2.5e4).
+
+#### Visualizing the Weights
+
+![image](https://github.com/user-attachments/assets/3e01c38c-2c09-4060-b39e-6b0d3c5d7006)
+
+The weights look very similar to the weights of Multi-Class SVM classifier but with more block artifacts. 
+
+---
