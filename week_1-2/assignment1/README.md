@@ -100,8 +100,8 @@ I got an accuracy of 36% with the softmax classifier over the validation set and
 
 #### Visualizing the Weights
 
-![image](https://github.com/user-attachments/assets/3e01c38c-2c09-4060-b39e-6b0d3c5d7006)
+![image](https://github.com/user-attachments/assets/b74782f0-aff0-404c-817c-5de83c215bce)
 
-The weights look very similar to the weights of Multi-Class SVM classifier but with more block artifacts. 
+The weights look very similar to the weights of Multi-Class SVM classifier.
 
 ---
